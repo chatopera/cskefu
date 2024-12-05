@@ -56,14 +56,14 @@ html
                     fontsize: 16,
                     newlineTag: "br",
                     uploadJson: "/im/image/upload.html?userid=#{userid}",
-                false,
+                    allowFileManager: false,
                     allowInsertUpload: false,		//增加的参数，上传图片后是否插入到当前区域
                     allowImageRemote: false,
                     filterMode: true,
 
                     items: items,
                     htmlTags: {
-                    ['src', 'width', 'height', 'border', 'alt', 'title', 'align', '.width', '.height', '.border'],
+                    img: ['src', 'width', 'height', 'border', 'alt', 'title', 'align', '.width', '.height', '.border'],
                         br: []
                     },
                     afterChange: function () {
@@ -100,9 +100,9 @@ html
                             socket.emit('message', {
                                 appid: "#{appid}",
                                 userid: "#{userid}",
-                            "writing",
+                            type: "writing",
                                 session: "#{sessionid}",
-                            strValue
+                            message: strValue
                             });
                         }
                         words = this.count("text");
@@ -327,7 +327,7 @@ html
                     $.ajax({
                         type: 'POST',
                         url: "/im/image/upload.html?userid=#{userid}",
-                    form,
+                    data: form,
                         processData: false,
                         contentType: false
                     }).done(function (data) {
@@ -640,9 +640,9 @@ html
                     socket.emit('message', {
                         appid: "#{appid}",
                         userid: "#{userid}",
-                    "message",
+                    type: "message",
                         session: "#{sessionid}",
-                    message
+                    message: message
                     });
                 }
             } else if (service_end == true) {
