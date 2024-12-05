@@ -217,8 +217,11 @@ html
                         else
                             div(style="padding:0px 5px 10px 5px;border-bottom:1px solid #dedede;")
                                 a#point_ad_text(href=welcomeAd.url, title=welcomeAd.tiptext, target="_blank")= welcomeAd.content
-            .clearfix.message.welcome
-                span#welcome-message= inviteData.dialog_message ? inviteData.dialog_message : '欢迎您来咨询！欢迎使用 Chatopera 云服务！如需帮助请联系 info@chatopera.com'
+
+            if inviteData.dialog_message != null && !inviteData.dialog_message.trim().isEmpty()
+                .clearfix.message.welcome
+                    span#welcome-message= inviteData.dialog_message ? inviteData.dialog_message : '欢迎您来咨询！欢迎使用 Chatopera 云服务！如需帮助请联系 info@chatopera.com'
+
             for chatMessage in pugHelper.reverse(chatMessageList.content)
                 if chatMessage.userid && userid && chatMessage.calltype && chatMessage.calltype == "呼入"
                     .clearfix.chat-block
@@ -584,10 +587,10 @@ html
                         appid: "#{appid}",
                         userid: "#{userid}",
                         username: "#{username}",
-                        channel: "webim",
+                    "webim",
                         type: "message",
                         contextid: "#{sessionid}",
-                        message: message
+                    message
                     });
                 }
             }
