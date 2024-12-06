@@ -965,18 +965,6 @@ p.submitBtnWrap {
     left: 45px;
 }
 
-.submitBtnWrap .submitBtn {
-    border-radius: 5px;
-}
-
-.submitBtnWrap .cancelBtn {
-    border-radius: 5px;
-    margin-left: 14px;
-    height: 35px;
-    justify-items: center;
-    margin-top: 8px;
-}
-
 .btn:focus {
     outline: none;
 }
@@ -1162,13 +1150,23 @@ p.submitBtnWrap {
 
 .submitBtnWrap .submitBtn {
     margin-left: 14px;
+    border-radius: 5px;
 }
 
 .submitBtnWrap .cancelBtn {
+    border-radius: 5px;
     margin-left: 14px;
     height: 35px;
     justify-items: center;
-    margin-top: 8px;
+    margin-top: 8px !important;
+
+    /* screen width sm */
+    @media (min-width: 576px) {
+        width: 84px;
+        height: 27px;
+        margin-top: 0 !important;
+        border: 0;
+    }
 }
 
 .submitBtn {
